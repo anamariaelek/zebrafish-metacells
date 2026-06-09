@@ -11,7 +11,7 @@ import os
 from datetime import datetime
 
 # Set output directory
-output_dir = "../../SEACells/outputs/ATAC"
+output_dir = "../ATAC"
 os.makedirs(output_dir, exist_ok=True)
 
 # Load data

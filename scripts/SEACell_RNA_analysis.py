@@ -10,11 +10,11 @@ import os
 from datetime import datetime
 
 # Set output directory
-output_dir = "../../SEACells/outputs/RNA"
+output_dir = "../RNA"
 os.makedirs(output_dir, exist_ok=True)
 
 # Load data
-data_path = "../../BA_data/RNA/zf_multiome_atlas_full_RNA_v1_release.h5ad"
+data_path = "../RNA/zf_multiome_atlas_full_RNA_v1_release.h5ad"
 filtered_rna = sc.read(data_path)
 print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Loaded data: {filtered_rna.shape}")
 
