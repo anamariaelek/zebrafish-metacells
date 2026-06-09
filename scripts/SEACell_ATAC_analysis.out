@@ -1,0 +1,74 @@
+findfont: Font family ['Raleway'] not found. Falling back to DejaVu Sans.
+findfont: Font family ['Lato'] not found. Falling back to DejaVu Sans.
+[2026-05-18T09:36:58.120] error: slurm_curl_request: curl_easy_perform failed to send data to https://vmetrics-slurmjobperformance.service.consul:8099/write?db=slurm&rp=default&precision=s. Reason: Timeout was reached
+[2026-05-18T09:36:58.121] error: send data failed
+[2026-05-18 09:37:07] Loaded data: (94562, 640834)
+[2026-05-18 09:37:09] Copied counts to .raw for SEACells fitting
+[2026-05-18 09:50:56] n_SEACells=1260
+Welcome to SEACells!
+Computing kNN graph using scanpy NN ...
+Computing radius for adaptive bandwidth kernel...
+  0%|          | 0/94562 [00:00<?, ?it/s]
+Making graph symmetric...
+Parameter graph_construction = union being used to build KNN graph...
+Computing RBF kernel...
+  0%|          | 0/94562 [00:00<?, ?it/s]
+Building similarity LIL matrix...
+  0%|          | 0/94562 [00:00<?, ?it/s]
+Constructing CSR matrix...
+[2026-05-18 09:59:50] Kernel matrix shape: (94562, 94562)
+[2026-05-18 09:59:50] Saved kernel matrix for later use.
+Building kernel on X_lsi
+Computing diffusion components from X_lsi for waypoint initialization ... 
+Determing nearest neighbor graph...
+Done.
+Sampling waypoints ...
+Done.
+Selecting 1222 cells from waypoint initialization.
+Initializing residual matrix using greedy column selection
+Initializing f and g...
+
+  0%|          | 0/48 [00:00<?, ?it/s]
+  6%|▋         | 3/48 [00:00<00:01, 23.85it/s]
+ 12%|█▎        | 6/48 [00:00<00:01, 24.16it/s]
+ 19%|█▉        | 9/48 [00:00<00:01, 24.20it/s]
+ 25%|██▌       | 12/48 [00:00<00:01, 24.01it/s]
+ 31%|███▏      | 15/48 [00:00<00:01, 23.67it/s]
+ 38%|███▊      | 18/48 [00:00<00:01, 23.86it/s]
+ 44%|████▍     | 21/48 [00:00<00:01, 23.59it/s]
+ 50%|█████     | 24/48 [00:01<00:01, 23.88it/s]
+ 56%|█████▋    | 27/48 [00:01<00:00, 23.64it/s]
+ 62%|██████▎   | 30/48 [00:01<00:00, 23.15it/s]
+ 69%|██████▉   | 33/48 [00:01<00:00, 22.83it/s]
+ 75%|███████▌  | 36/48 [00:01<00:00, 23.04it/s]
+ 81%|████████▏ | 39/48 [00:01<00:00, 22.92it/s]
+ 88%|████████▊ | 42/48 [00:01<00:00, 22.94it/s]
+ 94%|█████████▍| 45/48 [00:01<00:00, 22.71it/s]
+100%|██████████| 48/48 [00:02<00:00, 22.80it/s]
+100%|██████████| 48/48 [00:02<00:00, 23.27it/s]
+Selecting 38 cells from greedy initialization.
+Randomly initialized A matrix.
+Traceback (most recent call last):
+  File "SEACell_ATAC_analysis.py", line 79, in <module>
+    model.fit(min_iter=5, max_iter=100)
+  File "/home/hd/hd_hd/hd_mf354/miniforge3/envs/seacells/lib/python3.8/site-packages/SEACells-0.3.3-py3.8.egg/SEACells/cpu_dense.py", line 575, in fit
+    self._fit(
+  File "/home/hd/hd_hd/hd_mf354/miniforge3/envs/seacells/lib/python3.8/site-packages/SEACells-0.3.3-py3.8.egg/SEACells/cpu_dense.py", line 518, in _fit
+    self.initialize(
+  File "/home/hd/hd_hd/hd_mf354/miniforge3/envs/seacells/lib/python3.8/site-packages/SEACells-0.3.3-py3.8.egg/SEACells/cpu_dense.py", line 194, in initialize
+    RSS = self.compute_RSS(A, B)
+  File "/home/hd/hd_hd/hd_mf354/miniforge3/envs/seacells/lib/python3.8/site-packages/SEACells-0.3.3-py3.8.egg/SEACells/cpu_dense.py", line 446, in compute_RSS
+    return np.linalg.norm(self.kernel_matrix - reconstruction)
+  File "/home/hd/hd_hd/hd_mf354/miniforge3/envs/seacells/lib/python3.8/site-packages/scipy/sparse/_base.py", line 494, in __sub__
+    return self._sub_dense(other)
+  File "/home/hd/hd_hd/hd_mf354/miniforge3/envs/seacells/lib/python3.8/site-packages/scipy/sparse/_base.py", line 456, in _sub_dense
+    return self.todense() - other
+  File "/home/hd/hd_hd/hd_mf354/miniforge3/envs/seacells/lib/python3.8/site-packages/scipy/sparse/_base.py", line 946, in todense
+    return self._ascontainer(self.toarray(order=order, out=out))
+  File "/home/hd/hd_hd/hd_mf354/miniforge3/envs/seacells/lib/python3.8/site-packages/scipy/sparse/_compressed.py", line 1051, in toarray
+    out = self._process_toarray_args(order, out)
+  File "/home/hd/hd_hd/hd_mf354/miniforge3/envs/seacells/lib/python3.8/site-packages/scipy/sparse/_base.py", line 1298, in _process_toarray_args
+    return np.zeros(self.shape, dtype=self.dtype, order=order)
+numpy.core._exceptions.MemoryError: Unable to allocate 66.6 GiB for an array with shape (94562, 94562) and data type float64
+[2026-05-18T10:13:46.644] error: slurm_curl_request: curl_easy_perform failed to send data to https://vmetrics-slurmjobperformance.service.consul:8099/write?db=slurm&rp=default&precision=s. Reason: Timeout was reached
+[2026-05-18T10:13:46.644] error: send data failed
