@@ -1,0 +1,114 @@
+[2026-06-09 10:10:05] Loaded data: (94562, 32057)
+[2026-06-09 10:10:05] Copied counts to .raw for SEACells fitting
+Welcome to SEACells!
+Computing kNN graph using scanpy NN ...
+Computing radius for adaptive bandwidth kernel...
+  0%|          | 0/94562 [00:00<?, ?it/s]
+Making graph symmetric...
+Parameter graph_construction = union being used to build KNN graph...
+Computing RBF kernel...
+  0%|          | 0/94562 [00:00<?, ?it/s]
+Building similarity LIL matrix...
+  0%|          | 0/94562 [00:00<?, ?it/s]
+Constructing CSR matrix...
+[2026-06-09 10:34:08] Kernel matrix shape: (94562, 94562)
+[2026-06-09 10:34:08] Saved kernel matrix for later use.
+Building kernel on X_pca
+Computing diffusion components from X_pca for waypoint initialization ... 
+Determing nearest neighbor graph...
+Done.
+Sampling waypoints ...
+Done.
+Selecting 1228 cells from waypoint initialization.
+Initializing residual matrix using greedy column selection
+Initializing f and g...
+
+  0%|          | 0/42 [00:00<?, ?it/s]
+  5%|▍         | 2/42 [00:00<00:03, 11.65it/s]
+ 10%|▉         | 4/42 [00:00<00:03, 12.07it/s]
+ 14%|█▍        | 6/42 [00:00<00:02, 12.18it/s]
+ 19%|█▉        | 8/42 [00:00<00:02, 12.12it/s]
+ 24%|██▍       | 10/42 [00:00<00:02, 12.26it/s]
+ 29%|██▊       | 12/42 [00:00<00:02, 12.44it/s]
+ 33%|███▎      | 14/42 [00:01<00:02, 12.47it/s]
+ 38%|███▊      | 16/42 [00:01<00:02, 12.25it/s]
+ 43%|████▎     | 18/42 [00:01<00:01, 12.25it/s]
+ 48%|████▊     | 20/42 [00:01<00:01, 12.30it/s]
+ 52%|█████▏    | 22/42 [00:01<00:01, 12.19it/s]
+ 57%|█████▋    | 24/42 [00:01<00:01, 12.08it/s]
+ 62%|██████▏   | 26/42 [00:02<00:01, 12.16it/s]
+ 67%|██████▋   | 28/42 [00:02<00:01, 12.21it/s]
+ 71%|███████▏  | 30/42 [00:02<00:00, 12.10it/s]
+ 76%|███████▌  | 32/42 [00:02<00:00, 12.18it/s]
+ 81%|████████  | 34/42 [00:02<00:00, 12.13it/s]
+ 86%|████████▌ | 36/42 [00:02<00:00, 11.87it/s]
+ 90%|█████████ | 38/42 [00:03<00:00, 11.94it/s]
+ 95%|█████████▌| 40/42 [00:03<00:00, 12.15it/s]
+100%|██████████| 42/42 [00:03<00:00, 12.11it/s]
+100%|██████████| 42/42 [00:03<00:00, 12.16it/s]
+Selecting 32 cells from greedy initialization.
+Randomly initialized A matrix.
+Setting convergence threshold at 0.00561
+Starting iteration 1.
+Completed iteration 1.
+Starting iteration 10.
+Completed iteration 10.
+Starting iteration 20.
+Completed iteration 20.
+Starting iteration 30.
+Completed iteration 30.
+Starting iteration 40.
+Completed iteration 40.
+Converged after 43 iterations.
+[2026-06-10 13:07:16] SEACells fitting complete.
+[2026-06-10 13:07:16] Saving SEACell assignments to ../RNA/out/zf_multiome_atlas_full_RNA_v1_SEACells.h5ad...
+/home/hd/hd_hd/hd_mf354/miniforge3/envs/seacells/lib/python3.8/site-packages/SEACells-0.3.3-py3.8.egg/SEACells/plot.py:130: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(label_df.groupby("SEACell").count().iloc[:, 0], bins=bins)
+[2026-06-10 13:07:21] Saving SEACell assignments to ../RNA/out/zf_multiome_atlas_full_RNA_v1_SEACells.h5ad...
+
+  0%|          | 0/1260 [00:00<?, ?it/s]
+  2%|▏         | 24/1260 [00:00<00:05, 238.01it/s]
+  5%|▍         | 59/1260 [00:00<00:04, 299.43it/s]
+  7%|▋         | 94/1260 [00:00<00:03, 321.49it/s]
+ 10%|█         | 130/1260 [00:00<00:03, 335.62it/s]
+ 13%|█▎        | 167/1260 [00:00<00:03, 345.53it/s]
+ 16%|█▌        | 204/1260 [00:00<00:02, 353.51it/s]
+ 19%|█▉        | 241/1260 [00:00<00:02, 356.63it/s]
+ 22%|██▏       | 278/1260 [00:00<00:02, 359.86it/s]
+ 25%|██▌       | 316/1260 [00:00<00:02, 364.36it/s]
+ 28%|██▊       | 353/1260 [00:01<00:02, 364.13it/s]
+ 31%|███       | 391/1260 [00:01<00:02, 366.79it/s]
+ 34%|███▍      | 429/1260 [00:01<00:02, 367.99it/s]
+ 37%|███▋      | 467/1260 [00:01<00:02, 371.21it/s]
+ 40%|████      | 505/1260 [00:01<00:02, 370.52it/s]
+ 43%|████▎     | 543/1260 [00:01<00:01, 371.12it/s]
+ 46%|████▌     | 581/1260 [00:01<00:01, 368.86it/s]
+ 49%|████▉     | 620/1260 [00:01<00:01, 372.47it/s]
+ 52%|█████▏    | 658/1260 [00:01<00:01, 373.96it/s]
+ 55%|█████▌    | 696/1260 [00:01<00:01, 370.22it/s]
+ 58%|█████▊    | 735/1260 [00:02<00:01, 375.26it/s]
+ 61%|██████▏   | 773/1260 [00:02<00:01, 370.36it/s]
+ 64%|██████▍   | 811/1260 [00:02<00:01, 370.02it/s]
+ 67%|██████▋   | 849/1260 [00:02<00:01, 372.45it/s]
+ 70%|███████   | 888/1260 [00:02<00:00, 375.92it/s]
+ 74%|███████▎  | 928/1260 [00:02<00:00, 381.98it/s]
+ 77%|███████▋  | 967/1260 [00:02<00:00, 379.50it/s]
+ 80%|███████▉  | 1005/1260 [00:02<00:00, 368.02it/s]
+ 83%|████████▎ | 1042/1260 [00:02<00:00, 357.18it/s]
+ 86%|████████▌ | 1078/1260 [00:02<00:00, 356.22it/s]
+ 88%|████████▊ | 1115/1260 [00:03<00:00, 357.51it/s]
+ 91%|█████████▏| 1151/1260 [00:03<00:00, 357.37it/s]
+ 94%|█████████▍| 1188/1260 [00:03<00:00, 359.33it/s]
+ 97%|█████████▋| 1226/1260 [00:03<00:00, 364.95it/s]
+100%|██████████| 1260/1260 [00:03<00:00, 363.30it/s]
+[2026-06-10 13:07:30] Analysis complete. All outputs and plots are saved in: ../RNA/out
+Job completed.

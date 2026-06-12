@@ -2,9 +2,9 @@
 #SBATCH --partition=cpu-single
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=16
-#SBATCH --time=48:00:00
-#SBATCH --mem=220gb
+#SBATCH --cpus-per-task=1
+#SBATCH --time=36:00:00
+#SBATCH --mem=180gb
 #SBATCH --job-name=SEACell_RNA
 #SBATCH --output=SEACell_RNA_analysis.log
 #SBATCH --error=SEACell_RNA_analysis.log

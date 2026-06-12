@@ -11,7 +11,7 @@ import os
 from datetime import datetime
 
 # Set output directory
-output_dir = "../ATAC"
+output_dir = "../ATAC/out"
 os.makedirs(output_dir, exist_ok=True)
 
 # Load data
@@ -19,7 +19,7 @@ data_path = "../ATAC/zf_multiome_atlas_full_ATAC_v1_release.h5ad"
 filtered_atac = sc.read(data_path)
 print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Loaded data: {filtered_atac.shape}")
 
-## Subset to 5,000 cells (random sample)
+# Subset to 5,000 cells (random sample)
 #if filtered_atac.n_obs > 5000:
 #    np.random.seed(42)
 #    selected_cells = np.random.choice(filtered_atac.obs_names, 5000, replace=False)
@@ -143,4 +143,8 @@ sc.pp.log1p(SEACell_ad)
 # Save summarized data
 SEACell_ad.write(os.path.join(output_dir, "SEACell_summarized_ATAC.h5ad"))
 
+# Save model A matrix as numpy array for later use
+np.save(os.path.join(output_dir, "model_A_matrix.npy"), model.A_)
+
+# Log off
 print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Analysis complete. All outputs and plots are saved in: {output_dir}")

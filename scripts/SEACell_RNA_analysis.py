@@ -10,7 +10,7 @@ import os
 from datetime import datetime
 
 # Set output directory
-output_dir = "../RNA"
+output_dir = "../RNA/out"
 os.makedirs(output_dir, exist_ok=True)
 
 # Load data
@@ -18,15 +18,7 @@ data_path = "../RNA/zf_multiome_atlas_full_RNA_v1_release.h5ad"
 filtered_rna = sc.read(data_path)
 print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Loaded data: {filtered_rna.shape}")
 
-gene_peaks_10kb = pd.read_csv("gene_peak_assignments_10kb.csv")
-print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Gene-peak assignments: {gene_peaks_10kb.shape}")
-
-# Filter genes
-genes_in_peaks = gene_peaks_10kb['gene_id'].unique()
-filtered_rna = filtered_rna[:, filtered_rna.var_names.isin(genes_in_peaks)].copy()
-print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] After filtering, {filtered_rna.n_vars} genes remain for SEACells fitting")
-
-## Subset to 10,000 cells (random sample)
+# Subset to 10,000 cells (random sample)
 #if filtered_rna.n_obs > 10000:
 #    np.random.seed(42)
 #    selected_cells = np.random.choice(filtered_rna.obs_names, 10000, replace=False)
@@ -96,7 +88,7 @@ print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] SEACells fitting comple
 #print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Saving model to {output_dir}...")
 #model.save_model(output_dir)
 
-# Save the SEACell assignments and model
+# Save the SEACell assignments
 seacells_fn = os.path.join(output_dir, "zf_multiome_atlas_full_RNA_v1_SEACells.h5ad")
 print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Saving SEACell assignments to {seacells_fn}...")
 seacell_rna.write(seacells_fn)
@@ -142,7 +134,7 @@ SEACells.plot.plot_SEACell_sizes(seacell_rna, bins=50, show=False)
 plt.savefig(os.path.join(output_dir, "seacell_sizes_rna.png"))
 plt.close()
 
-# Save the SEACell assignments and model
+# Save the SEACell object
 print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Saving SEACell assignments to {seacells_fn}...")
 seacell_rna.write(seacells_fn)
 
@@ -156,4 +148,8 @@ sc.pp.log1p(SEACell_ad)
 # Save summarized data
 SEACell_ad.write(os.path.join(output_dir, "SEACell_summarized_RNA.h5ad"))
 
+# Save model A matrix as numpy array for later use
+np.save(os.path.join(output_dir, "model_A_matrix.npy"), model.A_)
+
+# Log off
 print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Analysis complete. All outputs and plots are saved in: {output_dir}")

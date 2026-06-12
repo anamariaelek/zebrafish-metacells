@@ -2,9 +2,9 @@
 #SBATCH --partition=cpu-single
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=1
 #SBATCH --time=48:00:00
-#SBATCH --mem=220gb
+#SBATCH --mem=400gb
 #SBATCH --job-name=SEACell_ATAC
 #SBATCH --output=SEACell_ATAC_analysis.log
 #SBATCH --error=SEACell_ATAC_analysis.log
